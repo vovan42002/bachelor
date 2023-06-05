@@ -67,7 +67,7 @@ class ControllerDAL:
     async def create_controller(self, body: Controller) -> Union[Controller, None]:
         try:
             new_controller = Controller(
-                email=body.email,
+                user_id=body.user_id,
                 last_changed=int(time.time()),
                 force_enable=body.force_enable,
                 status=body.status,
@@ -92,7 +92,7 @@ class ControllerDAL:
         return None
 
     async def get_controller_by_email(self, email: str) -> Union[Controller, None]:
-        query = select(Controller).where(Controller.email == email)
+        query = select(Controller).where(User.email == email)
         res = await self.db_session.execute(query)
         controller_row = res.fetchone()
         if controller_row is not None:

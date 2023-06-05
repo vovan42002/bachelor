@@ -80,7 +80,7 @@ class ControllerCreate(BaseModel):
     repeat: bool
     status: bool
     force_enable: bool
-    email: EmailStr
+    user_id: int
 
 
 class ControllerIdRespose(BaseModel):
@@ -96,7 +96,7 @@ class ControllerUpdate(BaseModel):
 
 
 class Controller(ControllerBase):
-    email: EmailStr
+    user_id: int
     sensors: list[Sensor] = []
 
     class Config:

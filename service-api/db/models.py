@@ -24,7 +24,6 @@ class Controller(Base):
     __tablename__ = "controllers"
 
     id = Column(Integer, primary_key=True, index=True)
-    email = Column(String, unique=True, nullable=False)
     force_enable = Column(Boolean, nullable=False)
     start_time = Column(Integer, nullable=True)
     end_time = Column(Integer, nullable=True)
