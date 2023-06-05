@@ -1,0 +1,17 @@
+version: "3.0"
+services:
+  db3:
+    container_name: db3
+    image: postgres:15.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=diploma
+    ports:
+      - "5432:5432"
+    networks:
+      - custom
+networks:
+  custom:
+    driver: bridge

@@ -1,0 +1,7 @@
+configuration:
+  serviceApi:
+    port: "8000"
+  esp:
+    port: "3000"
+  timeout: 30
+  renewTokenTimeout: 20

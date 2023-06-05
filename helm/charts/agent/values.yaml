@@ -1,0 +1,28 @@
+replicaCount: 1
+
+image:
+  repository: docker.io/vovan4/agent
+  pullPolicy: IfNotPresent
+  tag: "3.0.1"
+
+configuration:
+  serviceApi:
+    host: ""
+    port: ""
+  esp:
+    host: ""
+    port: ""
+  timeout: 30
+  email: ""
+  password: ""
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+podAnnotations: {}
+
+resources: {}
+nodeSelector: {}
+tolerations: []
+affinity: {}

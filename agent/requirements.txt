@@ -1,0 +1,4 @@
+envparse==0.2.0
+schedule==1.2.0
+aiohttp==3.8.4
+requests

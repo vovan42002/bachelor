@@ -1,0 +1,15 @@
+actions/__pycache__
+api/__pycache__
+db/__pycache__
+venv
+.gitignore
+docker-compose.yaml
+README.md
+__pycache__/
+.dist
+.idea
+helm
+.gitignore
+docker-compose.yaml
+README.md
+.vscode

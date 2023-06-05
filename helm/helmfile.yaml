@@ -1,0 +1,61 @@
+environments:
+  default:
+    values:
+      - ns: dev
+  dev:
+    values:
+      - ns: dev
+  prod:
+    values:
+      - ns: prod
+---
+repositories:
+  - name: bitnami
+    url: https://charts.bitnami.com/bitnami
+
+releases:
+
+  - name: service-api-postgresql
+    chart: bitnami/postgresql
+    version: 12.5.4
+    installed: true
+    namespace: {{ .Values.ns }}
+    secrets:
+      - configuration/service-api-postgresql-secret.yaml
+    values:
+      - configuration/service-api-postgresql.yaml
+
+  - name: service-api
+    chart: charts/service-api
+    installed: true
+    namespace: {{ .Values.ns }}
+    needs:
+     - {{.Values.ns}}/service-api-postgresql
+    secrets:
+      - configuration/service-api-secret.yaml
+    values:
+      - fullnameOverride: service-api
+      - image:
+         tag: "1.0.0"
+      - postgresql:
+          host: service-api-postgresql
+
+  - name: agent
+    chart: charts/agent
+    installed: true
+    namespace: {{ .Values.ns }}
+    needs: 
+      - {{ .Values.ns }}/service-api
+    secrets:
+      - configuration/agent-secret.yaml
+    values:
+      - fullnameOverride: agent
+      - configuration/agent.yaml
+      - image:
+          tag: "3.0.3"
+      - configuration:
+          serviceApi:
+            host: "service-api"
+          esp:
+            host: "192.168.0.3"
+            port: "3000"

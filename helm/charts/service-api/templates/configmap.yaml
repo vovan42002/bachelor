@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "service-api.fullname" . }}-env
+  labels:
+    {{- include "service-api.labels" . | nindent 4 }}
+data:
+  DB_HOST: {{ .Values.postgresql.host | quote }}
+  DB_USERNAME: {{ .Values.postgresql.username | quote }}
+  DB_NAME: {{ .Values.postgresql.dbName | quote }}
+  ALGORITHM: {{ .Values.encryption.algorithm | quote }}
+  ACCESS_TOKEN_EXPIRE_MINUTES: {{ .Values.encryption.tokenExpireMinutes | quote }}
