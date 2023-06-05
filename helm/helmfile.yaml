@@ -36,7 +36,7 @@ releases:
     values:
       - fullnameOverride: service-api
       - image:
-         tag: "2.0.0"
+         tag: "2.0.1"
       - postgresql:
           host: service-api-postgresql
 
