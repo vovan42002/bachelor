@@ -9,9 +9,6 @@ configuration:
   serviceApi:
     host: ""
     port: ""
-  esp:
-    host: ""
-    port: ""
   timeout: 30
   email: ""
   password: ""

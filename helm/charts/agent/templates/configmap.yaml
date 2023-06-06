@@ -7,7 +7,5 @@ metadata:
 data:
   SERVER_API_HOST: {{ .Values.configuration.serviceApi.host | quote }}
   SERVER_API_PORT: {{ .Values.configuration.serviceApi.port | quote }}
-  ESP_API_HOST: {{ .Values.configuration.esp.host | quote }}
-  ESP_API_PORT: {{ .Values.configuration.esp.port | quote }}
   TIMEOUT: {{ .Values.configuration.timeout | quote }}
   RENEW_TOKEN_TIMEOUT: {{ .Values.configuration.renewTokenTimeout | quote }}

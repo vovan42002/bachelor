@@ -52,10 +52,7 @@ releases:
       - fullnameOverride: agent
       - configuration/agent.yaml
       - image:
-          tag: "3.0.3"
+          tag: "4.0.0"
       - configuration:
           serviceApi:
             host: "service-api"
-          esp:
-            host: "192.168.0.3"
-            port: "3000"
