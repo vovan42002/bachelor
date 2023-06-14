@@ -1,0 +1,105 @@
+:root {
+    --primary-color: #5598fd;
+    --secondary-color: #495057;
+}
+
+* {
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-color);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("https://i.ibb.co/qNv7NxZ/pc.webp");
+    height: 100vh;
+}
+
+.form-container {
+    width: 320px;
+    border-radius: 0.75rem;
+    border: 1px solid var(--primary-color);
+    background: rgba(255, 255, 255, 0.815);
+    padding: 2rem;
+    color: var(--secondary-color);
+}
+
+.title {
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 700;
+}
+
+.input-group {
+    margin-top: 0.25rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+
+.input-group label {
+    display: block;
+    color: var(--secondary-color);
+    margin-bottom: 4px;
+}
+
+.input-group input {
+    width: 91%;
+    border-radius: 0.375rem;
+    border: 1px solid var(--secondary-color);
+    outline: 0;
+    padding: 0.75rem;
+    color: var(--secondary-colorr);
+}
+
+.input-group input:focus {
+    border-color: var(--primary-color);
+}
+
+.forgot {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    margin: 8px 0 14px 0;
+}
+
+.forgot a,
+.signup a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.forgot a:hover,
+.signup a:hover {
+    color: var(--primary-color);
+}
+
+.sign {
+    display: block;
+    width: 100%;
+    background-color: var(--primary-color);
+    padding: 0.75rem;
+    text-align: center;
+    color: var(--secondary-color);
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.sign:active {
+    transform: translateY(5px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.signup {
+    text-align: center;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    color: rgba(156, 163, 175, 1);
+}

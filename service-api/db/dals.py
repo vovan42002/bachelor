@@ -83,6 +83,14 @@ class ControllerDAL:
             print(f"An error occurred while creating a controller: {str(e)}")
             return None
 
+    async def get_controller_by_user_id(self, user_id: int) -> Union[Controller, None]:
+        query = select(Controller).where(Controller.user_id == user_id)
+        res = await self.db_session.execute(query)
+        controller_row = res.fetchone()
+        if controller_row is not None:
+            return controller_row[0]
+        return None
+
     async def get_controller_by_id(self, id: int) -> Union[Controller, None]:
         query = select(Controller).where(Controller.id == id)
         res = await self.db_session.execute(query)
@@ -91,15 +99,8 @@ class ControllerDAL:
             return controller_row[0]
         return None
 
-    async def get_controller_by_email(self, email: str) -> Union[Controller, None]:
-        query = select(Controller).where(User.email == email)
-        res = await self.db_session.execute(query)
-        controller_row = res.fetchone()
-        if controller_row is not None:
-            return controller_row[0]
-
     async def get_sensors(self, id: int) -> Union[List[Sensor], None]:
-        query = select(Sensor).where(Controller.id == id)
+        query = select(Sensor).where(Sensor.controller_id == id)
         res = await self.db_session.execute(query)
         sensors = res.fetchall()
         if sensors is not None:

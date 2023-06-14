@@ -1,0 +1,56 @@
+version: "3.0"
+services:
+  service-api-db:
+    container_name: service-api-db
+    image: postgres:15.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=diploma
+    ports:
+      - "5433:5432"
+    networks:
+      - custom
+  service-api:
+    container_name: service-api
+    image: docker.io/vovan4/service-api:2.0.3
+    restart: always
+    environment:
+      - DB_HOST=service-api-db
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_NAME=diploma
+      - SECRET_KEY=khblhbjdbhjbjhb
+      - ACCESS_TOKEN_EXPIRE_MINUTES=15
+    ports:
+      - "8000:8000"
+    networks:
+      - custom
+  agent:
+    container_name: agent
+    image: docker.io/vovan4/agent:4.0.2
+    restart: always
+    environment:
+      - SERVER_API_HOST=service-api
+      - SERVER_API_PORT=8000
+      - ESP_API_HOST=<IP of ESP8266>
+      - ESP_API_PORT=80
+      - EMAIL=user@example.com
+      - PASSWORD=123456
+      - TIMEOUT=10
+      - RENEW_TOKEN_TIMEOUT=10
+    networks:
+      - custom
+  web:
+    container_name: web
+    image: docker.io/vovan4/web:0.0.3
+    restart: always
+    networks:
+      - custom
+    ports:
+      - "8080:80"
+networks:
+  custom:
+    driver: bridge

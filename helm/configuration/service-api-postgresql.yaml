@@ -1,6 +1,6 @@
 primary:
   persistence:
-    size: 5Gi
+    size: 2Gi
   resources:
     limits:
       cpu: 200m

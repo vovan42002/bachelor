@@ -76,6 +76,12 @@ def swither(controller_info):
                 )
 
 
+def renew_token():
+    TempSettings.access_token = server.get_token(
+        password=settings.PASSWORD, email=settings.EMAIL
+    )
+
+
 def schedule_every_day(start_time_unix: int, end_time_unix: int, enabled: bool):
     if enabled:
         schedule_start_time = convert_unix_to_HHMMSS(time_unix=start_time_unix)
@@ -100,7 +106,7 @@ def schedule_every_day(start_time_unix: int, end_time_unix: int, enabled: bool):
 
 runner()
 schedule.every(settings.TIMEOUT).seconds.do(runner)
-schedule.every(settings.RENEW_TOKEN_TIMEOUT).minutes.do(server.get_token)
+schedule.every(settings.RENEW_TOKEN_TIMEOUT).minutes.do(renew_token)
 
 while True:
     schedule.run_pending()

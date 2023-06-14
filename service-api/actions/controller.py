@@ -1,6 +1,6 @@
 import time
 from typing import List, Union
-from db.dals import ControllerDAL
+from db.dals import ControllerDAL, UserDAL
 from api.models import Controller, ControllerCreate, ControllerIdRespose
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -30,9 +30,15 @@ async def _get_controller_by_email(
 ) -> Union[ControllerIdRespose, None]:
     async with session.begin():
         controller_dal = ControllerDAL(session)
-        controller = await controller_dal.get_controller_by_email(email=email)
-        if controller is not None:
-            return ControllerIdRespose(id=controller.id)
+        user_dal = UserDAL(session)
+        user = await user_dal.get_user_by_email(email=email)
+        if user is not None:
+            controller = await controller_dal.get_controller_by_user_id(
+                user_id=user.user_id
+            )
+            if controller is not None:
+                return ControllerIdRespose(id=controller.id)
+            return None
         return None
 
 

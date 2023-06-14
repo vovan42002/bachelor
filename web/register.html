@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/register.css">
+    <script src="node_modules/axios/dist/axios.min.js"></script>
+    <title>Register</title>
+
+</head>
+
+<body>
+    <div class="form-container">
+        <p class="title">Register</p>
+        <form class="form" id="form">
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="text" name="email" id="email" placeholder="">
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" placeholder="">
+            </div>
+            <div class="input-group">
+                <div id="error-container" class="error-container">
+                    <p id="error-message" class="error-message"></p>
+                </div>
+            </div>
+            <button class="sign" id="sign" type="submit">Sign up</button>
+        </form>
+        <p class="signup">Already have an account?
+            <a rel="noopener noreferrer" href="/login.html" class="">Sign in</a>
+        </p>
+    </div>
+
+    <script src="scripts/register.js"></script>
+
+</body>
+
+</html>
