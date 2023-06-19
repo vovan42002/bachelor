@@ -1,4 +1,4 @@
-const ip = "54.92.197.45";
+const ip = "52.91.147.240";
 const port = 8000;
 const token = localStorage.getItem("token");
 const email = localStorage.getItem("email");
@@ -331,7 +331,7 @@ function getWeatherData(city, unit, hourlyorWeek) {
           condition.innerText = "Дощ, хмарно";
           break;
       }
-      rain.innerText = today.cloudcover;
+      rain.innerText = today.precip;
       windSpeed.innerText = today.windspeed;
       mainIcon.src = getIcon(today.icon);
       changeBackground(today.icon);
@@ -636,7 +636,8 @@ getControlerID()
   });
 
 // Updating sensors data
-setInterval(getSensorsData, 5000);
+setInterval(getSensorsData, 3000);
+setInterval(getControlerData, 3000);
 
 // Redirect to login page after 10 minutes
 setInterval(() => {

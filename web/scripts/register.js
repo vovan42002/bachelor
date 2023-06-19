@@ -1,4 +1,4 @@
-const ip = "54.92.197.45";
+const ip = "52.91.147.240";
 const port = 8000;
 const loginForm = document.getElementById("form");
 const loginButton = document.getElementById("sign");
@@ -142,6 +142,6 @@ function createSensors(id_controller, type) {
 
 function replacePage() {
     setTimeout(() => {
-        window.location.replace("./index.html");
-    }, 1000);
-}
+      window.location.replace("./index.html");
+    }, 1000); // Задержка в 1 секунду (можете настроить значение по своему усмотрению)
+  }

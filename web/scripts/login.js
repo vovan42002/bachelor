@@ -1,4 +1,4 @@
-const ip = "54.92.197.45";
+const ip = "52.91.147.240";
 const port = 8000;
 const loginForm = document.getElementById("form");
 const loginButton = document.getElementById("sign");
